@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Sidebar from './Sidebar'
+import {API} from "./constant"
+import axios from "axios"
 
 //icons
 import { GrServices } from "react-icons/gr"
@@ -7,6 +9,34 @@ import { AiOutlineClose } from 'react-icons/ai'
 
 const Services = () => {
   const [showModal, setShowModal] = useState(false)
+  const [serv_name, setServicename] = useState("")
+  const [ur_name, setYourname] = useState("")
+  const [description, setDescription] = useState("")
+  const [Phone, setPhone] = useState("")
+  const [Image_Link, setImage_Link] = useState("")
+
+  const submitService = async (e) => {
+    e.preventDefault()
+    const data = {
+      serv_name: serv_name,
+      ur_name: ur_name,
+      description: description,
+      serv_number: Phone,
+      image: Image_Link
+    }
+    axios.post(`${API}/service`, data)
+      .then(res => {
+        console.log(res)
+        alert(res.data.message)
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+
+
 
 
   return (
@@ -61,33 +91,33 @@ const Services = () => {
                 </div>
                 <div className='flex justify-between mt-[20px] p-[10px]'>
                   <div className='w-[45%]'>
-                    <input type="text" placeholder='Enter service name' className='outline-none w-full p-[4px] border' />
+                    <input type="text" placeholder='Enter service name' className='outline-none w-full p-[4px] border' onChange={(e)=>setServicename(e.target.value)} />
                   </div>
 
                   <div className='w-[45%]'>
-                    <input type="text" placeholder='Enter your name' className='outline-none w-full p-[4px] border' />
+                    <input type="text" placeholder='Enter your name' className='outline-none w-full p-[4px] border' onChange={(e)=>setYourname(e.target.value)}/>
                   </div>
                 </div>
                 <div className='flex justify-between  p-[10px]'>
                   <div className='w-[45%]'>
-                    <input type="text" placeholder='Description' className='outline-none w-full p-[4px] border' maxLength={350} />
+                    <input type="text" placeholder='Description' className='outline-none w-full p-[4px] border' maxLength={350} onChange={(e)=>setDescription(e.target.value)}/>
                     <span className='text-[12px] text-red-400'>maximum 350 character are allowed</span>
                   </div>
                   
                   <div className='w-[45%]'>
-                    <input type="text" placeholder='Service number' className='outline-none w-full p-[4px] border' />
+                    <input type="text" placeholder='Service number' className='outline-none w-full p-[4px] border' onChange={(e)=>setPhone(e.target.value)}/>
                   </div>
 
                 </div>
                 <div className='flex justify-between  px-[10px]'>
                   <div className='w-[100%]'>
-                    <input type="text" placeholder='Image link' className='outline-none w-full p-[4px] border' maxLength={350} />
+                    <input type="text" placeholder='Image link' className='outline-none w-full p-[4px] border' maxLength={350} onChange={(e)=>setImage_Link(e.target.value)}/>
                   </div>
                 </div>
 
                 <div className='flex justify-center mt-[20px]'>
                   <div>
-                    <button  className='bg-[#047F8B] p-[8px] z-40  text-white font-semibold'>Add services</button>
+                    <button  className='bg-[#047F8B] p-[8px] z-40  text-white font-semibold' onClick={submitService}>Add services</button>
                   </div>
                 </div>
 
