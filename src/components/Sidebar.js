@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./../App.css"
 
 const Sidebar = ({children}) => {
     return (
         <div className="flex">
-            <div className="flex flex-col h-screen p-3 bg-gray-800 shadow w-60">
+            <div className="flex flex-col h-screen overflow-y-scroll yscrollbar p-3 bg-gray-800 shadow w-60">
                 <div className="space-y-3">
                     <div className="flex items-center">
                         <h2 className="text-xl font-bold text-white">Dashboard</h2>
@@ -164,7 +165,7 @@ const Sidebar = ({children}) => {
                     </div>
                 </div>
             </div>
-            <div className="container mx-auto mt-12">
+            <div className="w-full">
                 <>{children}</>
             </div>
         </div>
