@@ -22,7 +22,7 @@ const Login = () => {
             alert("user login successfully")
       localStorage.setItem("token", res.data.token);
 
-            window.location.href="/"
+            window.location.href="/dashboard"
         }).catch((res)=>{
             console.log(res)
         })
@@ -43,7 +43,7 @@ const Login = () => {
                         class="p-4 py-6 text-white bg-blue-500 md:w-80 md:flex-shrink-0 md:flex md:flex-col md:items-center md:justify-evenly"
                     >
                         <div class="my-3 text-4xl font-bold tracking-wider text-center">
-                            <a href="#">Nation xpress</a>
+                            <a href="#">Sarkar Digital Services</a>
                         </div>
                         <p class="mt-6 font-normal text-center text-gray-300 md:mt-0">
                         At Sarkar Digital Services, we understand the importance of providing hassle-free and reliable services to our customers. Our team of trained professionals are dedicated to ensuring that your experience with us is seamless and efficient.

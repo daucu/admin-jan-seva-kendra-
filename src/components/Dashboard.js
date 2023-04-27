@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Sidebar from './Sidebar'
 
 const Dashboard = () => {
+  //scroll to top
+  useEffect(() => {
+    window.scrollTo(
+      {
+        top: 0,
+        behavior: "smooth"
+    })
+  }, [])
   return (
     <Sidebar>
     
-    <div className='p-[20px] '>
-        <div className="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
+    <div className='p-[20px] h-screen overflow-y-scroll mt-[50px]'>
+        <div className="grid grid-cols-1 gap-6 mb-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className="max-w-sm rounded overflow-hidden shadow-lg">
             <img className="w-full" src="https://source.unsplash.com/random" alt="Random image" />
             <div className="px-6 py-4">

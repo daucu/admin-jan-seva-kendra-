@@ -30,7 +30,7 @@ const Register = () => {
         .then((res) => {
           console.log(res)
           alert("admin created successfully")
-          window.location.href="/login"
+          window.location.href="/"
         }).catch((err) => {
           console.log(err)
         })
@@ -58,7 +58,7 @@ const Register = () => {
          </p>
           <p class="flex flex-col items-center justify-center mt-10 text-center">
             <span>Have an account?</span>
-            <a href="/login" class="underline">Get Started!</a>
+            <a href="/" class="underline">Get Started!</a>
           </p>
           <p class="mt-6 text-sm text-center text-gray-300">
             Read our <a href="#" class="underline">terms</a> and <a href="#" class="underline">conditions</a>

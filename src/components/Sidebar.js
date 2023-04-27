@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./../App.css"
 
-const Sidebar = ({children}) => {
+//image
+import logo from "./../assets/neeraj_logo.png"
+
+//icons
+import { CiMenuBurger } from "react-icons/ci"
+
+const Sidebar = ({ children }) => {
+    const [openSidebar, setopenSidebar]= useState(false)
     return (
-        <div className="flex">
-            <div className="flex flex-col h-screen overflow-y-scroll yscrollbar p-3 bg-gray-800 shadow w-60">
+        <div className="md:flex">
+            <div className={`${openSidebar ? 'md:static fixed': "hidden"}  md:mt-[0px]  md:flex flex-col h-screen overflow-y-scroll yscrollbar p-3 bg-gray-800 shadow w-60`}>
                 <div className="space-y-3">
+                    {/* <div className="md:hidden">
+                        <div className="flex justify-end text-white">close</div>
+                    </div> */}
                     <div className="flex items-center">
                         <h2 className="text-xl font-bold text-white">Dashboard</h2>
                     </div>
@@ -41,54 +51,54 @@ const Sidebar = ({children}) => {
                     </div>
                     <div className="flex-1">
                         <ul className="pt-2 pb-4 space-y-1 text-sm">
-                            <Link to="/">
-                            <li className="rounded-sm">
-                                <a
-                                    href="#"
-                                    className="flex items-center p-2 space-x-3 rounded-md"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-gray-100"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        strokeWidth={2}
+                            <Link to="/dashboard">
+                                <li className="rounded-sm">
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 space-x-3 rounded-md"
                                     >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                                        />
-                                    </svg>
-                                    <span className="text-gray-100">Dashboard</span>
-                                </a>
-                            </li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="w-6 h-6 text-gray-100"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                                            />
+                                        </svg>
+                                        <span className="text-gray-100">Dashboard</span>
+                                    </a>
+                                </li>
                             </Link>
 
                             <Link to="/Services">
-                            <li className="rounded-sm">
-                                <a
-                                    href="#"
-                                    className="flex items-center p-2 space-x-3 rounded-md"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-gray-100"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        strokeWidth={2}
+                                <li className="rounded-sm">
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 space-x-3 rounded-md"
                                     >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                                        />
-                                    </svg>
-                                    <span className="text-gray-100">Services</span>
-                                </a>
-                            </li>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="w-6 h-6 text-gray-100"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+                                            />
+                                        </svg>
+                                        <span className="text-gray-100">Services</span>
+                                    </a>
+                                </li>
                             </Link>
                             <li className="rounded-sm">
                                 <a
@@ -165,8 +175,18 @@ const Sidebar = ({children}) => {
                     </div>
                 </div>
             </div>
-            <div className="w-full">
-                <>{children}</>
+
+            {/* mobile menu navbar */}
+            <div className="md:hidden fixed top-0 flex justify-between w-full bg-white h-[50px] border-b">
+                <div className="w-[50px] ml-4 flex justify-center items-center"><CiMenuBurger size={30} onClick={()=>setopenSidebar(!openSidebar)} /></div>
+                <div className="py-[4px]">
+                     <div className='mx-[30px] w-[60px] h-full p-[5px] rounded-md bg-black'>
+                    <img src={logo} alt="brand logo" />
+                </div> 
+                </div>
+            </div>
+            <div className="w-full" onclick={()=>setopenSidebar(!openSidebar)}>
+                < >{children}</>
             </div>
         </div>
     );
