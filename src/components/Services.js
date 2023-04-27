@@ -9,6 +9,10 @@ import { GrServices } from "react-icons/gr"
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsWhatsapp } from "react-icons/bs"
 
+//images
+import loading_img from "./../assets/loading.gif"
+
+
 
 const Services = () => {
   const [showModal, setShowModal] = useState(false)
@@ -21,6 +25,8 @@ const Services = () => {
   const [id_to_edit, setId_to_edit] = useState("")
 
   const [service, setService] = useState('')
+  const [loading, setLoading] = React.useState(false)
+
 
   const [user, setUser] = useState("")
 
@@ -69,10 +75,12 @@ const Services = () => {
 
 
   const getService = async () => {
+    setLoading(true)
     axios.get(`${API}/service`)
       .then(res => {
         console.log(res.data.services)
         setService(res.data.services)
+        setLoading(false)
       })
       .catch(err => {
         console.log(err)
@@ -135,7 +143,7 @@ const Services = () => {
 
   return (
     <Sidebar>
-      <div className='p-[20px] h-screen  overflow-y-scroll mt-[50px]'>
+      <div className='p-[20px] h-screen  overflow-y-scroll mt-[50px] md:mt-0'>
 
         <div className='w-full py-[8px] px-[5px] shadow-md border flex justify-between mb-[10px]'>
           <div className='flex items-center'>
@@ -154,17 +162,21 @@ const Services = () => {
 
         <div className="flex justify-around flex-wrap gap-6 mb-6  items-stretch ">
         <div className='p-[20px] '>
+        {loading ? <><div className='flex justify-center  w-full h-screen '>
+            <img className='w-[100px] h-[100px] mix-blend-color-lighten' src={loading_img} alt="loading" />
+          </div>
+          </> : null}
           <div className="grid grid-cols-1 gap-6 mb-6  sm:grid-cols-2 lg:grid-cols-3">
             {
               user && user.map((item) => {
                 return (
                   
-                    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                    <div className="max-w-sm rounded overflow-hidden shadow-lg border-2">
                       <img className="w-full h-[200px]" src={item.image} alt="Random image" />
                       <div className="px-6 pt-2">
-                        <div className="font-bold text-xl mb-2 text-center">{item.serv_name}</div>
+                        <div className="font-bold text-xl mb-2 text-left">{item.serv_name}</div>
                       </div>
-                      <div className="px-6 pt-2 pb-2">
+                      <div className=" pt-2 pb-2">
                       <div className="px-6 pt-4 pb-2">
               <span className="inline-block bg-gray-200  px-3 py-1 text-sm font-semibold text-gray-700 mr-2 cursor-pointer" onClick={()=>get_id_to_update(item._id)}>Edit</span>
               <span className="inline-block bg-gray-200  px-3 py-1 text-sm font-semibold text-gray-700 mr-2 cursor-pointer" onClick={()=>deleteService(item._id)}>Delete</span>

@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react'
 import Sidebar from './Sidebar'
 
+//images
+import loading_img from "./../assets/loading.gif"
+
+
 const Dashboard = () => {
+  const [loading, setLoading] = React.useState(false)
+
   //scroll to top
   useEffect(() => {
     window.scrollTo(
@@ -10,13 +16,20 @@ const Dashboard = () => {
         behavior: "smooth"
     })
   }, [])
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+  }, [])
   return (
     <Sidebar>
     
     <div className='p-[20px] h-screen overflow-y-scroll mt-[50px]'>
+    {/* {loading ? <><img className='w-[100px] h-[100px] mix-blend-color-lighten' src={loading_img} alt="loading" /></> : null} */}
         <div className="grid grid-cols-1 gap-6 mb-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className="max-w-sm rounded overflow-hidden shadow-lg">
-            <img className="w-full" src="https://source.unsplash.com/random" alt="Random image" />
+    {loading ? <><img className='w-[100px] h-[100px] mix-blend-color-lighten' src={loading_img} alt="loading" /></> : <img className="w-full" src="https://source.unsplash.com/random" alt="Random image" /> }
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2">Card Title</div>
               <p className="text-gray-700 text-base">
@@ -31,7 +44,7 @@ const Dashboard = () => {
           </div>
 
           <div className="max-w-sm rounded overflow-hidden shadow-lg">
-            <img className="w-full" src="https://source.unsplash.com/random" alt="Random image" />
+          {loading ? <><img className='w-[100px] h-[100px] mix-blend-color-lighten' src={loading_img} alt="loading" /></> : <img className="w-full" src="https://source.unsplash.com/random" alt="Random image" /> }
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2">Card Title</div>
               <p className="text-gray-700 text-base">
@@ -46,7 +59,7 @@ const Dashboard = () => {
           </div>
 
           <div className="max-w-sm rounded overflow-hidden shadow-lg">
-            <img className="w-full" src="https://source.unsplash.com/random" alt="Random image" />
+          {loading ? <><img className='w-[100px] h-[100px] mix-blend-color-lighten' src={loading_img} alt="loading" /></> : <img className="w-full" src="https://source.unsplash.com/random" alt="Random image" /> }
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2">Card Title</div>
               <p className="text-gray-700 text-base">

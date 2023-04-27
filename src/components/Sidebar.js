@@ -12,7 +12,7 @@ const Sidebar = ({ children }) => {
     const [openSidebar, setopenSidebar]= useState(false)
     return (
         <div className="md:flex">
-            <div className={`${openSidebar ? 'md:static fixed': "hidden"}  md:mt-[0px]  md:flex flex-col h-screen overflow-y-scroll yscrollbar p-3 bg-gray-800 shadow w-60`}>
+            <div className={`${openSidebar ? 'fixed top-0': "hidden"} md:mt-[0px]  md:flex flex-col h-screen overflow-y-scroll yscrollbar p-3 bg-gray-800 shadow w-[250px] shrink-0`}>
                 <div className="space-y-3">
                     {/* <div className="md:hidden">
                         <div className="flex justify-end text-white">close</div>
