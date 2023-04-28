@@ -51,17 +51,17 @@ const Register = () => {
           class="p-4 py-6 text-white bg-blue-500 md:w-80 md:flex-shrink-0 md:flex md:flex-col md:items-center md:justify-evenly"
         >
           <div class="my-3 text-4xl font-bold tracking-wider text-center">
-            <a href="#">Sarkar Digital Services</a>
+            <a href="#" className='text-white'>Sarkar Digital Services</a>
           </div>
-          <p class="mt-6 font-normal text-center text-gray-300 md:mt-0">
+          <p class="mt-6 font-normal text-center text-gray-300 md:mt-0 text-white">
           At Sarkar Digital Services, we understand the importance of providing hassle-free and reliable services to our customers. Our team of trained professionals are dedicated to ensuring that your experience with us is seamless and efficient.
          </p>
           <p class="flex flex-col items-center justify-center mt-10 text-center">
             <span>Have an account?</span>
-            <a href="/" class="underline">Get Started!</a>
+            <a href="/" class="underline text-white">Get Started!</a>
           </p>
           <p class="mt-6 text-sm text-center text-gray-300">
-            Read our <a href="#" class="underline">terms</a> and <a href="#" class="underline">conditions</a>
+            Read our <a href="#" class="underline text-white">terms</a> and <a href="#" class="underline text-white">conditions</a>
           </p>
         </div>
         <div class="p-5 bg-white md:flex-1">

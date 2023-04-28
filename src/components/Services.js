@@ -30,6 +30,31 @@ const Services = () => {
 
   const [user, setUser] = useState("")
 
+  const [isLoggedIn, setIsLoggedIn] = React.useState("")
+
+
+  const get_login_user = async () => {
+    await axios.get(`${API}/login/isLoggedIn`,{
+     headers: {
+          "Content-Type": "application/json",
+          "token": localStorage.getItem("token")
+      }
+    })
+    .then((res) => {
+        console.log(res)
+        setIsLoggedIn(res.data)
+       
+    })
+    .catch((err) => {
+        console.log(err)
+    }
+    )
+}
+useEffect(() => {
+    get_login_user()
+}, [])
+
+
     //scroll to top
     useEffect(() => {
       window.scrollTo(
@@ -142,7 +167,9 @@ const Services = () => {
   }
 
   return (
-    <Sidebar>
+    <>
+    {isLoggedIn === false ? (<><h1>Not Logged In</h1></>) : (
+      <Sidebar>
       <div className='p-[20px] h-screen  overflow-y-scroll mt-[50px] md:mt-0'>
 
         <div className='w-full py-[8px] px-[5px] shadow-md border flex justify-between mb-[10px]'>
@@ -352,6 +379,9 @@ const Services = () => {
           null
       }
     </Sidebar>
+    )}
+    
+    </>
   )
 }
 

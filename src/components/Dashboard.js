@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import Sidebar from './Sidebar'
+import axios from 'axios'
+import { API } from './constant'
 
 //images
 import loading_img from "./../assets/loading.gif"
@@ -7,6 +9,29 @@ import loading_img from "./../assets/loading.gif"
 
 const Dashboard = () => {
   const [loading, setLoading] = React.useState(false)
+  const [isLoggedIn, setIsLoggedIn] = React.useState("")
+
+
+  const get_login_user = async () => {
+    await axios.get(`${API}/login/isLoggedIn`,{
+     headers: {
+          "Content-Type": "application/json",
+          "token": localStorage.getItem("token")
+      }
+    })
+    .then((res) => {
+        console.log(res)
+        setIsLoggedIn(res.data)
+       
+    })
+    .catch((err) => {
+        console.log(err)
+    }
+    )
+}
+useEffect(() => {
+    get_login_user()
+}, [])
 
   //scroll to top
   useEffect(() => {
@@ -23,7 +48,9 @@ const Dashboard = () => {
     }, 1000)
   }, [])
   return (
-    <Sidebar>
+
+    <>
+    {isLoggedIn === false ? ( <><h1>Not Logged In</h1></>):( <Sidebar>
     
     <div className='p-[20px] h-screen overflow-y-scroll mt-[50px]'>
     {/* {loading ? <><img className='w-[100px] h-[100px] mix-blend-color-lighten' src={loading_img} alt="loading" /></> : null} */}
@@ -76,7 +103,9 @@ const Dashboard = () => {
 
     
       </div>
-</Sidebar>
+</Sidebar>)}
+
+</>
   )
 }
 
