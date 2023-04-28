@@ -24,7 +24,8 @@ const Login = () => {
 
             window.location.href="/dashboard"
         }).catch((res)=>{
-            console.log(res)
+            console.log(res.response.data.message)
+            alert(res.response.data.message)
         })
     }
 
