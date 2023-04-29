@@ -17,18 +17,14 @@ const Register = () => {
   
     const handleSubmit = (event) => {
       event.preventDefault();
-  
       const data= {
         name:Name,
         email:email,
         password:password,
-       
-      }
-   
-  
-      axios.post(`${API}/register`,data)
+       }
+       axios.post(`${API}/register`,data)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           alert("admin created successfully")
           window.location.href="/"
         }).catch((err) => {
@@ -109,6 +105,8 @@ const Register = () => {
             required
           />
         </div>
+       
+       
     
         <button
           type="submit"

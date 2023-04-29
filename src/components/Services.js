@@ -279,34 +279,34 @@ useEffect(() => {
       {
         showModal ? (
           <>
-            <div className="flex  justify-center z-50 fixed inset-0 left-[50px] right-[50px]  top-[150px]  h-[300px]  ">
+            <div className="flex  justify-center z-50 fixed inset-0 left-[50px] right-[50px]  top-[150px] h-[350px] sm:h-[300px]  ">
               <div className='bg-[#E2E2E2] w-[500px]  flex flex-col  justify-start shadow-md'>
                 <div className='flex justify-between w-full border-b-[1px] border-[#374151]'>
                   <div></div>
                   <div className='text-[20px] font-bold'>Create service</div>
                   <div className='p-[10px] h-[40px]'><AiOutlineClose size={20} onClick={() => setShowModal(false)} /></div>
                 </div>
-                <div className='flex justify-between mt-[20px] p-[10px]'>
-                  <div className='w-[45%]'>
+                <div className='flex flex-wrap justify-between mt-[20px] px-[10px] sm:p-[10px]'>
+                  <div className='w-full sm:w-[45%] mt-[5px]'>
                     <input type="text" placeholder='Enter service name' className='outline-none w-full p-[4px] border' onChange={(e) => setServicename(e.target.value)} />
                   </div>
 
-                  <div className='w-[45%]'>
+                  <div className='w-full sm:w-[45%] mt-[5px]'>
                     <input type="text" placeholder='Enter your name' className='outline-none w-full p-[4px] border' onChange={(e) => setYourname(e.target.value)} />
                   </div>
                 </div>
-                <div className='flex justify-between  p-[10px]'>
-                  <div className='w-[45%]'>
+                <div className='flex flex-wrap justify-between px-[10px] sm:p-[10px]'>
+                  <div className='w-full sm:w-[45%] mt-[5px]'>
                   <input type="text" placeholder='Image link' className='outline-none w-full p-[4px] border' maxLength={350} onChange={(e) => setImage_Link(e.target.value)} />
                     {/* <span className='text-[12px] text-red-400'>maximum 350 character are allowed</span> */}
                   </div>
 
-                  <div className='w-[45%]'>
+                  <div className='w-full sm:w-[45%] mt-[5px]'>
                     <input type="text" placeholder='Service number' className='outline-none w-full p-[4px] border' onChange={(e) => setPhone(e.target.value)} />
                   </div>
 
                 </div>
-                <div className='flex justify-between  px-[10px]'>
+                <div className='flex justify-between mt-[5px] sm:mt-[0px] px-[10px]'>
                   <div className='w-[100%]'>
                   <textarea rows={2} cols={50} type="text" placeholder='Description' className='outline-none resize-none w-full p-[4px] border'  onChange={(e) => setDescription(e.target.value)} />
 
@@ -331,35 +331,35 @@ useEffect(() => {
         {
         Edit_modal ? (
           <>
-            <div className="flex  justify-center z-50 fixed inset-0 left-[50px] right-[50px]  top-[150px]  h-[300px]  ">
+            <div className="flex  justify-center z-50 fixed inset-0 left-[50px] right-[50px]  top-[150px] h-[350px] sm:h-[300px]  ">
               <div className='bg-[#E2E2E2] w-[500px]  flex flex-col  justify-start shadow-md'>
                 <div className='flex justify-between w-full border-b-[1px] border-[#374151]'>
                   <div></div>
                   <div className='text-[20px] font-bold'>Edit service</div>
                   <div className='p-[10px] h-[40px]'><AiOutlineClose size={20} onClick={() => setEdit_modal(false)} /></div>
                 </div>
-                <div className='flex justify-between mt-[20px] p-[10px]'>
-                  <div className='w-[45%]'>
+                <div className='flex flex-wrap justify-between mt-[20px] px-[10px] sm:p-[10px]'>
+                  <div className=' w-full sm:w-[45%] mt-[5px]'>
                     <input type="text"value={serv_name} placeholder='Enter service name' className='outline-none w-full p-[4px] border' onChange={(e) => setServicename(e.target.value)} />
                   </div>
 
-                  <div className='w-[45%]'>
+                  <div className='w-full sm:w-[45%] mt-[5px]'>
                     <input type="text" value={ur_name} placeholder='Enter your name' className='outline-none w-full p-[4px] border' onChange={(e) => setYourname(e.target.value)} />
                   </div>
                 </div>
-                <div className='flex justify-between  p-[10px]'>
-                  <div className='w-[45%]'>
+                <div className='flex flex-wrap justify-between px-[10px] sm:p-[10px]'>
+                  <div className='w-full sm:w-[45%] mt-[5px]'>
                   <input type="text" value={Image_Link} placeholder='Image link' className='outline-none w-full p-[4px] border' maxLength={350} onChange={(e) => setImage_Link(e.target.value)} />
 
                     {/* <span className='text-[12px] text-red-400'>maximum 350 character are allowed</span> */}
                   </div>
 
-                  <div className='w-[45%]'>
+                  <div className='w-full sm:w-[45%] mt-[5px]'>
                     <input type="text" value={Phone} placeholder='Service number' className='outline-none w-full p-[4px] border' onChange={(e) => setPhone(e.target.value)} />
                   </div>
 
                 </div>
-                <div className='flex justify-between  px-[10px]'>
+                <div className='flex justify-between  px-[10px] mt-[5px]'>
                   <div className='w-[100%]'>
                   <textarea rows={2} cols={50}  type="text" value={description} placeholder='Description' className='outline-none resize-none w-full p-[4px] border'  onChange={(e) => setDescription(e.target.value)} />
 

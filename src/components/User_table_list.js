@@ -15,7 +15,7 @@ export default function User_table_list() {
             }
         })
         .then((res) => {
-            console.log(res.data.user)
+            // console.log(res.data.user)
             setuserid(res.data.user._id)
             setname(res.data.user.name)
             setemail(res.data.user.email)
@@ -38,6 +38,7 @@ export default function User_table_list() {
 <table class="table">
   <thead class="black white-text">
     <tr>
+    <th scope="col">#</th>
       <th scope="col">Userid</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
@@ -45,9 +46,10 @@ export default function User_table_list() {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">{userid}</th>
-      <td>{name}</td>
+    <tr >
+      <td><div  className=' w-[40px]  h-[40px] bg-red-500 rounded-full'></div></td>
+      <th scope="row" >{userid}</th>
+      <td >{name}</td>
       <td>{email}</td>
       
      
