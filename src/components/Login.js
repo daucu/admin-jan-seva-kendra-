@@ -6,8 +6,8 @@ const Login = () => {
   
     const [userid, setUserId] = useState('');
     const [password, setPassword] = useState('');
-    console.log(userid)
-    console.log(password)
+    // console.log(userid)
+    // console.log(password)
 
 
     const handlesubmit =(e)=>{

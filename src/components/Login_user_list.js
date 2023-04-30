@@ -35,7 +35,7 @@ const upload_image = async() =>{
     }
   })
   .then((res)=>{
-    console.log(res)
+    // console.log(res)
     alert(res.data.message)
     window.location.reload()
   })
@@ -71,7 +71,7 @@ const update_user = async() =>{
       }
     })
       .then((res) => {
-        console.log(res.data.user)
+        // console.log(res.data.user)
         setIsLoggedIn(res.data)
         setName(res.data.user.name)
         setEmail(res.data.user.email)

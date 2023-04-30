@@ -15,7 +15,28 @@ import { API } from "./constant";
 const Sidebar = ({ children }) => {
     const [openSidebar, setopenSidebar]= useState(false)
     const [status, setStatus] = useState('')
+const [loggedIn,setIsLoggedIn]=useState("")
 
+    const get_login_user = async () => {
+        await axios.get(`${API}/login/isLoggedIn`, {
+          headers: {
+            "Content-Type": "application/json",
+            "token": localStorage.getItem("token")
+          }
+        })
+          .then((res) => {
+            // console.log(res)
+            setIsLoggedIn(res.data)
+    
+          })
+          .catch((err) => {
+            console.log(err)
+          }
+          )
+      }
+      useEffect(() => {
+        get_login_user()
+      }, []) 
     const varios_user_status= async() =>{
         axios.put(`${API}/check-status`,{
             headers:{
@@ -24,7 +45,7 @@ const Sidebar = ({ children }) => {
             }
         })
         .then((res)=>{
-            console.log(res.data.data.status)
+            // console.log(res.data.data.status)
             setStatus(res.data.data.status)
         })
         .catch((err)=>{
@@ -43,7 +64,7 @@ const Sidebar = ({ children }) => {
             }
        })
         .then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             alert(res.data.message)
             localStorage.removeItem("token")
             window.location.href = "/"
@@ -52,8 +73,12 @@ const Sidebar = ({ children }) => {
             console.log(err)
         })
     }
+
+
     return (
-        <div className="md:flex">
+        <>
+        {loggedIn === false ? (<><h1>Not logged In</h1></>):(
+            <div className="md:flex">
             <div className={`${openSidebar ? 'fixed top-0': "hidden"} md:mt-[0px]  md:flex flex-col h-screen overflow-y-scroll yscrollbar py-3 bg-gray-800 shadow w-[250px] shrink-0`}>
                 <div className="space-y-3">
                     {/* <div className="md:hidden">
@@ -175,7 +200,10 @@ const Sidebar = ({ children }) => {
             <div className="w-full" onclick={()=>setopenSidebar(!openSidebar)}>
                 < >{children}</>
             </div>
-        </div>
+        </div> 
+        )}
+       
+        </>
     );
 }
 export default Sidebar;

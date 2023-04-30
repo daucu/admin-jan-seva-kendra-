@@ -34,7 +34,7 @@ export default function User_table_list() {
 
 
   return (
-   <div>
+   <div className='table-responsive'>
 <table class="table">
   <thead class="black white-text">
     <tr>

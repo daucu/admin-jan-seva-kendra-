@@ -74,7 +74,7 @@ export default function Multiple_user() {
 
 
   return (
-   <div>
+   <div className='table-responsive'>
 <table class="table">
   <thead class="black white-text">
     <tr>

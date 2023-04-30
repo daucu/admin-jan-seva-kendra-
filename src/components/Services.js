@@ -41,7 +41,7 @@ const Services = () => {
       }
     })
     .then((res) => {
-        console.log(res)
+        // console.log(res)
         setIsLoggedIn(res.data)
        
     })
@@ -89,7 +89,7 @@ useEffect(() => {
     }
     axios.post(`${API}/service`, data)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         alert(res.data.message)
         window.location.reload();
       })
@@ -103,7 +103,7 @@ useEffect(() => {
     setLoading(true)
     axios.get(`${API}/service`)
       .then(res => {
-        console.log(res.data.services)
+        // console.log(res.data.services)
         setService(res.data.services)
         setLoading(false)
       })
@@ -121,7 +121,7 @@ useEffect(() => {
       .then(res => {
         setId_to_edit(id)
         setEdit_modal(!Edit_modal)
-        console.log(res.data.service)
+        // console.log(res.data.service)
         setServicename(res.data.service.serv_name)
         setYourname(res.data.service.ur_name)
         setDescription(res.data.service.description)
@@ -145,7 +145,7 @@ useEffect(() => {
     }
     axios.put(`${API}/service/${id}`, data)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         alert(res.data.message)
         window.location.reload();
       })
@@ -157,7 +157,7 @@ useEffect(() => {
   const deleteService = async (id) => {
     axios.delete(`${API}/service/${id}`)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         alert(res.data.message)
         window.location.reload();
       })
