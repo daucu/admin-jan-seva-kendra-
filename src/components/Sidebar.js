@@ -9,6 +9,7 @@ import logo from "./../assets/neeraj_logo.png"
 import { CiMenuBurger } from "react-icons/ci"
 import { FiUserCheck } from "react-icons/fi"
 import { IoPeopleOutline } from "react-icons/io5"
+import {BsChatDots} from "react-icons/bs"
 import axios from "axios";
 import { API } from "./constant";
 
@@ -84,7 +85,7 @@ const Sidebar = ({ children }) => {
                             {/* <div className="md:hidden">
                         <div className="flex justify-end text-white">close</div>
                     </div> */}
-                            <div className="flex items-center">
+                            <div className="flex items-center px-[15px]">
                                 <h2 className="text-xl font-bold text-white">Dashboard</h2>
                             </div>
 
@@ -158,6 +159,17 @@ const Sidebar = ({ children }) => {
                                             >
                                                 <IoPeopleOutline size={24} color="#ffffff" />
                                                 <span className="text-gray-100">User</span>
+                                            </a>
+                                        </li>
+                                    </Link>
+                                    <Link to="/message">
+                                        <li className="rounded-sm hover:bg-slate-400">
+                                            <a
+                                                href="#"
+                                                className="flex items-center p-2 px-[20px] space-x-3 rounded-md"
+                                            >
+                                                <BsChatDots size={22} color="#ffffff" />
+                                                <span className="text-gray-100">Messages</span>
                                             </a>
                                         </li>
                                     </Link>
