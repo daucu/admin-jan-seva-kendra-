@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API } from './constant';
 
+//img
+import loading_img from "./../assets/loading.gif"
+
 export default function User_table_list() {
     const [userid, setuserid] = useState('')
     const [name, setname] = useState('')
     const [email, setemail] = useState('')
+    const [loading, setloading] = useState(false)
 
     const get_login_user = async () => {
+      setloading(true)
         await axios.get(`${API}/login/isLoggedIn`,{
             headers: {
                 "Content-Type": "application/json",
@@ -19,6 +24,7 @@ export default function User_table_list() {
             setuserid(res.data.user._id)
             setname(res.data.user.name)
             setemail(res.data.user.email)
+            setloading(false)
         })
         .catch((err) => {
             console.log(err)
@@ -35,6 +41,12 @@ export default function User_table_list() {
 
   return (
    <div className='table-responsive'>
+        {loading ? <><div className='flex justify-center  w-full h-screen '>
+        <img className='w-[100px] h-[100px] mix-blend-color-lighten' src={loading_img} alt="loading" />
+      </div>
+      </> : null
+}
+
 <table class="table">
   <thead class="black white-text">
     <tr>

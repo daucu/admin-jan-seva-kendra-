@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API } from './constant';
 
+//image
+import loading_img from "./../assets/loading.gif"
+
+
 export default function Multiple_user() {
     const [userid, setuserid] = useState('')
     const [name, setname] = useState('')
     const [email, setemail] = useState('')
     const [status, setStatus] = useState('')
     const [userdata,setuserdata]= useState([])
+    const [loading, setloading] = useState(false)
 
     const get_login_user = async () => {
         await axios.get(`${API}/login/isLoggedIn`,{
@@ -33,6 +38,7 @@ export default function Multiple_user() {
     }, [])
 
     const varios_user_status= async() =>{
+        setloading(true)
         axios.put(`${API}/check-status`,{
             headers:{
                 "Content-Type":"application/json",
@@ -42,6 +48,7 @@ export default function Multiple_user() {
         .then((res)=>{
             // console.log(res.data.data.status)
             setStatus(res.data.data.status)
+            setloading(false)
         })
         .catch((err)=>{
             console.log(err)
@@ -75,6 +82,12 @@ export default function Multiple_user() {
 
   return (
    <div className='table-responsive'>
+        {loading ? <><div className='flex justify-center  w-full h-screen '>
+        <img className='w-[100px] h-[100px] mix-blend-color-lighten' src={loading_img} alt="loading" />
+      </div>
+      </> : null
+}
+
 <table class="table">
   <thead class="black white-text">
     <tr>
@@ -86,12 +99,17 @@ export default function Multiple_user() {
 
      
     </tr>
-  </thead>
-  <tbody>
+  </thead> 
+  <tbody >
+
+
+
     {
       // console.log(userdata)
     userdata && userdata.map((user,index)=>{
+
         return(
+            
             <tr key={index}>
             <th scope="row">{index+1}</th>
             <td>{user._id}</td>
